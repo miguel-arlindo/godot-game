@@ -59,11 +59,4 @@ func animatebody(action):
 			if modelAnim.current_animation != "Run-loop":
 				modelAnim.play("Run-loop");
 		
-			
-			# Declare member variables here. Examples:
-# var a = 2
-# var b = "tex
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
