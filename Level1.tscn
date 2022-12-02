@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://door1C.tres" type="Material" id=1]
 [ext_resource path="res://-_1-Drum_Rack.wav" type="AudioStream" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://-_PERCUSSION.wav" type="AudioStream" id=8]
 [ext_resource path="res://images.jpeg" type="Texture" id=9]
 [ext_resource path="res://F9 Space Vox Blip 90 Amin.4.wav" type="AudioStream" id=10]
-[ext_resource path="res://sound.gd" type="Script" id=11]
+[ext_resource path="res://controler.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape" id=4]
 radius = 0.696268
@@ -36,13 +36,10 @@ glow_intensity = 0.32
 glow_strength = 1.33
 glow_blend_mode = 0
 
-[sub_resource type="PhysicsMaterial" id=16]
-
-[sub_resource type="CapsuleShape" id=17]
-height = 0.002
-
 [sub_resource type="QuadMesh" id=7]
 size = Vector2( 15, 15 )
+
+[sub_resource type="Skin" id=16]
 
 [sub_resource type="SpatialMaterial" id=12]
 vertex_color_use_as_albedo = true
@@ -76,11 +73,43 @@ tracks/0/keys = {
 "values": [ 0.47, 2.16, 4.32, 1.8, 0.4 ]
 }
 
+[sub_resource type="CubeMesh" id=17]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="Skin" id=18]
+
+[sub_resource type="Gradient" id=22]
+offsets = PoolRealArray( 0.00292398, 0.997076 )
+colors = PoolColorArray( 1, 0, 0.248497, 1, 1, 0, 0, 0 )
+
+[sub_resource type="GradientTexture2D" id=23]
+gradient = SubResource( 22 )
+fill_from = Vector2( 0, 0.992236 )
+fill_to = Vector2( 0, 0 )
+
+[sub_resource type="SpatialMaterial" id=19]
+flags_transparent = true
+flags_disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource( 23 )
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 3.5
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = SubResource( 23 )
+
+[sub_resource type="ConcavePolygonShape" id=21]
+data = PoolVector3Array( -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5 )
+
 [node name="level1" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17357, 0, 0 )
 
 [node name="player" type="KinematicBody" parent="."]
 transform = Transform( -3.67841e-08, 0, -0.970556, 0, 0.973362, 0, 0.841523, 0, -4.24244e-08, -9.92137, 0.141034, 0 )
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="player"]
@@ -98,23 +127,10 @@ script = ExtResource( 5 )
 [node name="3DGodotRobot" parent="player" instance=ExtResource( 7 )]
 transform = Transform( -0.771264, 0, -6.74261e-08, 0, 0.771264, 0, 6.74261e-08, 0, -0.771264, 0, 0, 0 )
 
-[node name="RigidBody" type="RigidBody" parent="player"]
-transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0.715636, 0 )
-physics_material_override = SubResource( 16 )
-contacts_reported = 1
-contact_monitor = true
-script = ExtResource( 11 )
-
-[node name="CollisionShape" type="CollisionShape" parent="player/RigidBody"]
-transform = Transform( 1.264, 3.55271e-15, 0, 0, -0.021431, 0.99977, 0, -0.99977, -0.021431, 0, 0, 0 )
-shape = SubResource( 17 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource( 10 )
-
 [node name="floor" type="MeshInstance" parent="."]
 transform = Transform( -3.14172e-07, -7.18742, 0, -3.14172e-07, 1.37329e-14, 1, -7.18742, 3.14172e-07, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 7 )
+skin = SubResource( 16 )
 material/0 = SubResource( 12 )
 
 [node name="StaticBody" type="StaticBody" parent="floor"]
@@ -143,8 +159,15 @@ collision_mask = 0
 [node name="CollisionShape" type="CollisionShape" parent="Doors level1/door1C/StaticBody"]
 shape = SubResource( 9 )
 
-[node name="doorsound" type="AudioStreamPlayer" parent="Doors level1/door1C/StaticBody"]
-stream = ExtResource( 10 )
+[node name="Area" type="Area" parent="Doors level1/door1C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 2
+audio_bus_override = true
+audio_bus_name = "sfx"
+
+[node name="CollisionShape" type="CollisionShape" parent="Doors level1/door1C/Area"]
+shape = SubResource( 9 )
 
 [node name="door1R" type="MeshInstance" parent="Doors level1"]
 transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, -2, 1.146, 10.416 )
@@ -301,10 +324,42 @@ collision_mask = 0
 transform = Transform( 1, 0, 0, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0 )
 shape = SubResource( 9 )
 
+[node name="doorsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "sfx"
+
 [node name="doorglows" type="AnimationPlayer" parent="."]
 autoplay = "anim_glowsdoor"
 anims/anim_glowsdoor = SubResource( 15 )
 
-[connection signal="body_entered" from="player/RigidBody" to="player" method="_on_RigidBody_body_entered"]
-[connection signal="body_entered" from="player/RigidBody" to="player/RigidBody" method="_on_RigidBody_body_entered"]
-[connection signal="finished" from="player/AudioStreamPlayer" to="player/RigidBody" method="_on_AudioStreamPlayer_finished"]
+[node name="controler" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1.5201, 0, 0.171738, 0, 1.622, 0, -8.85852, 0, 0.0294699, -0.6745, 0.848, 5.38815 )
+include_in_bound = false
+allow_merging = false
+mesh = SubResource( 17 )
+skin = SubResource( 18 )
+material/0 = SubResource( 19 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = SubResource( 21 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -1.49675, 0, 0.171815, 0, 1.622, 0, -8.8625, 0, -0.0290172, -0.791502, 0.848, -5.39159 )
+include_in_bound = false
+allow_merging = false
+mesh = SubResource( 17 )
+skin = SubResource( 18 )
+material/0 = SubResource( 19 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody"]
+shape = SubResource( 21 )
+
+[connection signal="input_event" from="Doors level1/door1C/StaticBody" to="controler" method="_on_StaticBody_input_event"]
+[connection signal="area_entered" from="Doors level1/door1C/Area" to="controler" method="_on_Area_area_entered"]
