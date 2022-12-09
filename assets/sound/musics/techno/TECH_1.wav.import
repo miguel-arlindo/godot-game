@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/techno1.wav-ba41031411beb61281cea6095fae1531.sample"
+path="res://.import/TECH_1.wav-43882b7eea31b176a74eb0bbbfbcf61d.sample"
 
 [deps]
 
-source_file="res://assets/sound/musics/techno/techno1.wav"
-dest_files=[ "res://.import/techno1.wav-ba41031411beb61281cea6095fae1531.sample" ]
+source_file="res://assets/sound/musics/techno/TECH_1.wav"
+dest_files=[ "res://.import/TECH_1.wav-43882b7eea31b176a74eb0bbbfbcf61d.sample" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/techno2.wav-e3541c1e77cbc7773bc9fe077e5bfe9b.sample"
+path="res://.import/DNB_2.wav-f12b7e60a515cdb7274530165dc16698.sample"
 
 [deps]
 
-source_file="res://assets/sound/musics/techno/techno2.wav"
-dest_files=[ "res://.import/techno2.wav-e3541c1e77cbc7773bc9fe077e5bfe9b.sample" ]
+source_file="res://assets/sound/musics/DnB/DNB_2.wav"
+dest_files=[ "res://.import/DNB_2.wav-f12b7e60a515cdb7274530165dc16698.sample" ]
 
 [params]
 

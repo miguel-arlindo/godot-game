@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/techno4.wav-9f46f9a32054deeb5e09175d53e00b1d.sample"
+path="res://.import/BRK_2.wav-90b16ba343574e8df1467eaaeeda7e25.sample"
 
 [deps]
 
-source_file="res://assets/sound/musics/techno/techno4.wav"
-dest_files=[ "res://.import/techno4.wav-9f46f9a32054deeb5e09175d53e00b1d.sample" ]
+source_file="res://assets/sound/musics/break/BRK_2.wav"
+dest_files=[ "res://.import/BRK_2.wav-90b16ba343574e8df1467eaaeeda7e25.sample" ]
 
 [params]
 
