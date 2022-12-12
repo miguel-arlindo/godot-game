@@ -1,6 +1,8 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://door1C.tres" type="Material" id=1]
+[ext_resource path="res://checkwin.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://player.gd" type="Script" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://assets/texturas/floor.jpeg" type="Texture" id=6]
@@ -197,6 +199,7 @@ tracks/0/keys = {
 
 [node name="level1" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17357, 0, 0 )
+script = ExtResource( 2 )
 
 [node name="player" type="KinematicBody" parent="."]
 transform = Transform( -3.67841e-08, 0, -0.970556, 0, 0.973362, 0, 0.841523, 0, -4.24244e-08, -9.92137, 0.141034, 0 )
@@ -209,7 +212,7 @@ transform = Transform( 1, -4.88498e-15, -3.17637e-22, 0, -6.07204e-09, 0.258671,
 shape = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="player"]
-transform = Transform( 1.18827, 0.00435964, -0.0077168, -0.00130408, 0.951648, 0.389031, 0.0101478, -0.3882, 0.953599, -0.00102028, 1.60845, 1.92879 )
+transform = Transform( -1.18824, -0.00590497, 0.00862505, 0, 0.848227, 0.581953, -0.0120702, 0.581307, -0.849082, 0.00125474, 18.8463, -75.9248 )
 cull_mask = 1
 environment = SubResource( 14 )
 current = true
@@ -221,6 +224,13 @@ autoplay = "RESET"
 reset_on_save = false
 anims/RESET = SubResource( 25 )
 anims/intro = SubResource( 26 )
+
+[node name="Restart" type="Button" parent="player/Camera"]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Restart"
+icon = ExtResource( 3 )
 
 [node name="3DGodotRobot" parent="player" instance=ExtResource( 7 )]
 transform = Transform( -0.771264, 0, -6.74261e-08, 0, 0.771264, 0, 6.74261e-08, 0, -0.771264, 0, 0, 0 )
@@ -298,6 +308,7 @@ max_distance = 10.0
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1R"]
 transform = Transform( 7.93413, 0.195317, 1.40667e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, 0.632397, -0.0942528, -0.0561724 )
+unit_db = 9.0
 max_distance = 10.0
 __meta__ = {
 "_editor_description_": ""
@@ -337,7 +348,7 @@ max_distance = 10.0
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1L"]
 transform = Transform( 7.93653, 0, -1.83582e-05, 0, 0.905797, 0, -5.96046e-08, 0, 1.31234, 0, 0, 0 )
-unit_db = 6.0
+unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level1/door1L"]
@@ -378,6 +389,7 @@ doppler_tracking = 1
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2C"]
 transform = Transform( 7.9341, 0.195316, -7.67488e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, 0.852625, -0.0948713, -0.0561874 )
+unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level2/door2C"]
@@ -415,6 +427,7 @@ max_distance = 10.0
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2R"]
 transform = Transform( 7.93413, 0.195317, 1.40667e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, 0.632397, -0.0942528, -0.0561724 )
+unit_db = 9.0
 max_distance = 10.0
 __meta__ = {
 "_editor_description_": ""
@@ -454,7 +467,7 @@ max_distance = 10.0
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2L"]
 transform = Transform( 7.93653, 0, -1.83582e-05, 0, 0.905797, 0, -5.96046e-08, 0, 1.31234, 0, 0, 0 )
-unit_db = 6.0
+unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level2/door2L"]
@@ -495,6 +508,7 @@ doppler_tracking = 1
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3C"]
 transform = Transform( 7.9341, 0.195316, -7.67488e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, 0.852625, -0.0948713, -0.0561874 )
+unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level3/door3C"]
@@ -532,6 +546,7 @@ max_distance = 10.0
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3R"]
 transform = Transform( 7.93413, 0.195317, 1.40667e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, 0.632397, -0.0942528, -0.0561724 )
+unit_db = 9.0
 max_distance = 10.0
 __meta__ = {
 "_editor_description_": ""
@@ -571,7 +586,7 @@ max_distance = 10.0
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3L"]
 transform = Transform( 7.93653, 0, -1.83582e-05, 0, 0.905797, 0, -5.96046e-08, 0, 1.31234, 0, 0, 0 )
-unit_db = 6.0
+unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level3/door3L"]
@@ -612,6 +627,7 @@ doppler_tracking = 1
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4C"]
 transform = Transform( 7.9341, 0.195316, -7.67488e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, 0.852625, -0.0948713, -0.0561874 )
+unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level4/door4C"]
@@ -649,6 +665,7 @@ max_distance = 10.0
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4R"]
 transform = Transform( 7.93413, 0.195317, 1.40667e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, 0.632397, -0.0942528, -0.0561724 )
+unit_db = 9.0
 max_distance = 10.0
 __meta__ = {
 "_editor_description_": ""
@@ -688,7 +705,7 @@ max_distance = 10.0
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4L"]
 transform = Transform( 7.93653, 0, -1.83582e-05, 0, 0.905797, 0, -5.96046e-08, 0, 1.31234, 0, 0, 0 )
-unit_db = 6.0
+unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level4/door4L"]
@@ -833,10 +850,12 @@ material/0 = SubResource( 19 )
 [node name="CollisionShape" type="CollisionShape" parent="WALLS/Walls Level 4/wall1B/StaticBody"]
 shape = SubResource( 21 )
 
+[node name="Intro Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+
 [node name="doorglows" type="AnimationPlayer" parent="."]
 autoplay = "anim_glowsdoor"
 anims/anim_glowsdoor = SubResource( 15 )
 
-[node name="Intro Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-autoplay = true
+[connection signal="button_down" from="player/Camera/Restart" to="." method="_on_Button_button_down"]
