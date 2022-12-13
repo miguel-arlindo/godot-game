@@ -38,6 +38,7 @@ func _unhandled_input(event):
 			rotate_y(-lerp(0, spin, event.relative.x/10))
 		elif event.relative.x < 0:
 			rotate_y(-lerp(0, spin, event.relative.x/10))
+		
 
 func animatebody(action):
 	
