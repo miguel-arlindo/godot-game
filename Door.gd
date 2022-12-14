@@ -12,6 +12,7 @@ onready var audio_fx := get_node("audio_fx");
 onready var audio_global := get_node("audio_global");
 onready var collision := get_node("StaticBody");
 onready var area := get_node("Area");
+onready var winvideo := get_node("../../../player/Camera/VideoPlayer")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,6 +38,7 @@ func _on_Area_body_exited(body):
 			var door = int(get_node(".").get_name().substr(4, 1));
 			level.Winsequence.push_back(snd_style);
 			level.checkWins(door);
+			winvideo.play();
 
 
 func _on_Area_body_entered(body):

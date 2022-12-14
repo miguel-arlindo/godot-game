@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://door1C.tres" type="Material" id=1]
 [ext_resource path="res://checkwin.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://assets/texturas/floor.jpeg" type="Texture" id=6]
 [ext_resource path="res://3DGodotRobot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/anims/Parabens_1.webm" type="VideoStream" id=8]
 [ext_resource path="res://assets/texturas/images.jpeg" type="Texture" id=9]
 [ext_resource path="res://assets/sound/musics/DnB/DNB_4.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/sound/gameplay/intro.wav" type="AudioStream" id=11]
@@ -212,7 +213,7 @@ transform = Transform( 1, -4.88498e-15, -3.17637e-22, 0, -6.07204e-09, 0.258671,
 shape = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="player"]
-transform = Transform( 1.18827, 0.00384898, -0.0079856, -0.00130408, 0.974774, 0.326207, 0.0101478, -0.325433, 0.977, -0.0124644, 1.76235, 2.95611 )
+transform = Transform( -1.18824, -0.00590497, 0.00862505, 0, 0.848227, 0.581953, -0.0120702, 0.581307, -0.849082, 0.00125474, 18.8463, -75.9248 )
 cull_mask = 1
 environment = SubResource( 14 )
 current = true
@@ -231,6 +232,16 @@ margin_right = 12.0
 margin_bottom = 20.0
 text = "Restart"
 icon = ExtResource( 3 )
+
+[node name="VideoPlayer" type="VideoPlayer" parent="player/Camera"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 190.0
+margin_top = 106.0
+margin_right = -156.0
+margin_bottom = -86.0
+stream = ExtResource( 8 )
 
 [node name="3DGodotRobot" parent="player" instance=ExtResource( 7 )]
 transform = Transform( -0.771264, 0, -6.74261e-08, 0, 0.771264, 0, 6.74261e-08, 0, -0.771264, 0, 0, 0 )

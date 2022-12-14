@@ -26,6 +26,7 @@ func checkWins(level):
 	
 	if(Winsequence.count(Winsequence[0]) >= win_level):
 		print("GANHASTE");
+		#VideoStream.stream();
 	else:
 		print("Perdeste");
 		
