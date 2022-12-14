@@ -1,10 +1,14 @@
 extends Spatial
 
+var winvideo := preload("res://assets/anims/Parabens_1.webm");
+var losevideo := preload("res://assets/anims/Lose.webm");
+
 var Winsequence = []
 
 onready var camera_anim = get_node("player/Camera/AnimationPlayer");
 onready var player = get_node("player");
 onready var bt_restart = get_node("player/Camera/Restart");
+onready var videoplayer := $VideoPlayer 
 
 export(int) var win_level = 4;
 # Declare member variables here. Examples:
@@ -25,9 +29,15 @@ func checkWins(level):
 	print(Winsequence);
 	
 	if(Winsequence.count(Winsequence[0]) >= win_level):
+		videoplayer.stream = winvideo;
+		videoplayer.play();
+		$VideoPlayer.visible = true
 		print("GANHASTE");
 		#VideoStream.stream();
 	else:
+		videoplayer.stream = losevideo;
+		videoplayer.play();
+		$VideoPlayer.visible = true
 		print("Perdeste");
 		
 		
@@ -46,3 +56,7 @@ func _on_Button_button_down():
 	bt_restart.visible = false;
 	camera_anim.play();
 	pass # Replace with function body.
+
+
+func _on_VideoPlayer_finished():
+	videoplayer.play()
