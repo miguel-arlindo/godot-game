@@ -1,29 +1,29 @@
 [gd_scene load_steps=48 format=2]
 
-[ext_resource path="res://door1C.tres" type="Material" id=1]
-[ext_resource path="res://checkwin.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://assets/texturas/HD-wallpaper-broken-glass-android-colorful-droid-htc-texture-xperiaz-thumbnail.jpeg" type="Texture" id=4]
-[ext_resource path="res://Camera.gd" type="Script" id=5]
-[ext_resource path="res://assets/texturas/floor.jpeg" type="Texture" id=6]
+[ext_resource path="res://Door.gd" type="Script" id=1]
+[ext_resource path="res://randomizeaudio.gd" type="Script" id=2]
+[ext_resource path="res://assets/texturas/images.jpeg" type="Texture" id=3]
+[ext_resource path="res://assets/sound/musics/break/BRK_2.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/musics/break/BRK_4.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/musics/techno/TECH_3.wav" type="AudioStream" id=6]
 [ext_resource path="res://3DGodotRobot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/anims/Parabens_1.webm" type="VideoStream" id=8]
-[ext_resource path="res://assets/texturas/images.jpeg" type="Texture" id=9]
-[ext_resource path="res://assets/sound/musics/DnB/DNB_4.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/sound/gameplay/intro.wav" type="AudioStream" id=11]
-[ext_resource path="res://Door.gd" type="Script" id=12]
+[ext_resource path="res://door1C.tres" type="Material" id=8]
+[ext_resource path="res://assets/texturas/HD-wallpaper-broken-glass-android-colorful-droid-htc-texture-xperiaz-thumbnail.jpeg" type="Texture" id=9]
+[ext_resource path="res://assets/texturas/floor.jpeg" type="Texture" id=10]
+[ext_resource path="res://assets/sound/musics/techno/TECH_2.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/gameplay/intro.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/sound/musics/techno/TECH_4.wav" type="AudioStream" id=13]
-[ext_resource path="res://assets/sound/musics/techno/TECH_1.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/sound/musics/break/BRK_3.wav" type="AudioStream" id=15]
-[ext_resource path="res://assets/sound/musics/break/BRK_2.wav" type="AudioStream" id=16]
-[ext_resource path="res://assets/sound/musics/techno/TECH_3.wav" type="AudioStream" id=17]
-[ext_resource path="res://assets/sound/musics/techno/TECH_2.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/sound/musics/DnB/DNB_1.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/sound/musics/break/BRK_4.wav" type="AudioStream" id=20]
-[ext_resource path="res://assets/sound/musics/DnB/DNB_2.wav" type="AudioStream" id=21]
-[ext_resource path="res://assets/sound/musics/DnB/DNB_3.wav" type="AudioStream" id=22]
-[ext_resource path="res://assets/sound/musics/break/BRK_1.wav" type="AudioStream" id=23]
-[ext_resource path="res://randomizeaudio.gd" type="Script" id=24]
+[ext_resource path="res://assets/sound/musics/DnB/DNB_4.wav" type="AudioStream" id=14]
+[ext_resource path="res://checkwin.gd" type="Script" id=15]
+[ext_resource path="res://assets/sound/musics/techno/TECH_1.wav" type="AudioStream" id=16]
+[ext_resource path="res://Camera.gd" type="Script" id=17]
+[ext_resource path="res://icon.png" type="Texture" id=18]
+[ext_resource path="res://assets/anims/Parabens_1.webm" type="VideoStream" id=19]
+[ext_resource path="res://assets/sound/musics/DnB/DNB_2.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sound/musics/break/BRK_3.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/sound/musics/break/BRK_1.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/sound/musics/DnB/DNB_3.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/sound/musics/DnB/DNB_1.wav" type="AudioStream" id=24]
 
 [sub_resource type="GDScript" id=27]
 script/source = "extends KinematicBody
@@ -90,7 +90,7 @@ size = Vector2( 15, 15 )
 
 [sub_resource type="SpatialMaterial" id=12]
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource( 6 )
+albedo_texture = ExtResource( 10 )
 uv1_scale = Vector3( 6, 6, 6 )
 uv1_triplanar = true
 
@@ -158,7 +158,7 @@ data = PoolVector3Array( -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.
 [sub_resource type="AnimatedTexture" id=34]
 
 [sub_resource type="SpatialMaterial" id=33]
-albedo_texture = ExtResource( 4 )
+albedo_texture = ExtResource( 9 )
 metallic = 0.16
 metallic_specular = 1.0
 emission_enabled = true
@@ -176,7 +176,7 @@ refraction_texture_channel = 3
 
 [sub_resource type="PanoramaSky" id=13]
 radiance_size = 3
-panorama = ExtResource( 9 )
+panorama = ExtResource( 3 )
 
 [sub_resource type="Environment" id=14]
 background_mode = 2
@@ -275,7 +275,7 @@ tracks/2/keys = {
 
 [node name="level1" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17357, 0, 0 )
-script = ExtResource( 2 )
+script = ExtResource( 15 )
 
 [node name="player" type="KinematicBody" parent="."]
 transform = Transform( -3.67841e-08, 0, -0.970556, 0, 0.973362, 0, 0.841523, 0, -4.24244e-08, -9.92137, 0.141034, 0 )
@@ -313,17 +313,17 @@ shape = SubResource( 8 )
 transform = Transform( 0.126, 0, 0, 0, 1.104, 0, 0, 0, 0.762, 0.17357, 1.14637, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1C"]
 transform = Transform( 7.9341, 0.195316, -7.69798e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, -3.18557, -0.0835274, -0.0559143 )
-stream = ExtResource( 14 )
+stream = ExtResource( 16 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
-script = ExtResource( 24 )
-audio_files = [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 14 ) ]
+script = ExtResource( 2 )
+audio_files = [ ExtResource( 24 ), ExtResource( 22 ), ExtResource( 16 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1C"]
 transform = Transform( 7.9341, 0.195316, -7.67488e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, 0.852625, -0.0948713, -0.0561874 )
@@ -331,7 +331,7 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level1/door1C"]
-stream = ExtResource( 14 )
+stream = ExtResource( 16 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level1/door1C"]
 collision_layer = 0
@@ -354,12 +354,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, -2, 1.146, 10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1R"]
 transform = Transform( 7.93413, 0.195317, 1.38283e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, -3.14223, -0.0762488, 0.0632067 )
-stream = ExtResource( 19 )
+stream = ExtResource( 24 )
 autoplay = true
 max_distance = 10.0
 
@@ -372,7 +372,7 @@ __meta__ = {
 }
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level1/door1R"]
-stream = ExtResource( 19 )
+stream = ExtResource( 24 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level1/door1R"]
 collision_layer = 0
@@ -394,12 +394,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.0671741, 0, 0.644679, 0, 1.104, 0, -0.1066, 0, 0.406243, -2, 1.146, -10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1L"]
 transform = Transform( 7.93412, 0.195317, -1.90735e-05, -0.0222885, 0.905398, -0.0150481, -0.000536501, 0.0217954, 1.31215, -3.78498, -0.0719867, 0.0302019 )
-stream = ExtResource( 23 )
+stream = ExtResource( 22 )
 autoplay = true
 max_distance = 10.0
 
@@ -409,7 +409,7 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level1/door1L"]
-stream = ExtResource( 23 )
+stream = ExtResource( 22 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level1/door1L"]
 collision_layer = 0
@@ -434,12 +434,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.126, 0, 0, 0, 1.104, 0, 0, 0, 0.762, 16.0689, 1.14637, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2C"]
 transform = Transform( 7.9341, 0.195316, -7.69798e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, -3.18557, -0.0835274, -0.0559143 )
-stream = ExtResource( 21 )
+stream = ExtResource( 20 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
@@ -450,7 +450,7 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level2/door2C"]
-stream = ExtResource( 21 )
+stream = ExtResource( 20 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level2/door2C"]
 collision_layer = 0
@@ -473,12 +473,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, 13.8953, 1.146, 10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2R"]
 transform = Transform( 7.93413, 0.195317, 1.38283e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, -3.14223, -0.0762488, 0.0632067 )
-stream = ExtResource( 18 )
+stream = ExtResource( 11 )
 autoplay = true
 max_distance = 10.0
 
@@ -491,7 +491,7 @@ __meta__ = {
 }
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level2/door2R"]
-stream = ExtResource( 18 )
+stream = ExtResource( 11 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level2/door2R"]
 collision_layer = 0
@@ -513,12 +513,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.0671741, 0, 0.644679, 0, 1.104, 0, -0.1066, 0, 0.406243, 13.8953, 1.146, -10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2L"]
 transform = Transform( 7.93412, 0.195317, -1.90735e-05, -0.0222885, 0.905398, -0.0150481, -0.000536501, 0.0217954, 1.31215, -3.78498, -0.0719867, 0.0302019 )
-stream = ExtResource( 16 )
+stream = ExtResource( 4 )
 autoplay = true
 max_distance = 10.0
 
@@ -528,7 +528,7 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level2/door2L"]
-stream = ExtResource( 16 )
+stream = ExtResource( 4 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level2/door2L"]
 collision_layer = 0
@@ -553,12 +553,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.126, 0, 0, 0, 1.104, 0, 0, 0, 0.762, 32.3273, 1.14637, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3C"]
 transform = Transform( 7.9341, 0.195316, -7.69798e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, -3.18557, -0.0835274, -0.0559143 )
-stream = ExtResource( 15 )
+stream = ExtResource( 21 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
@@ -569,7 +569,7 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level3/door3C"]
-stream = ExtResource( 15 )
+stream = ExtResource( 21 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level3/door3C"]
 collision_layer = 0
@@ -592,12 +592,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, 30.1537, 1.146, 10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3R"]
 transform = Transform( 7.93413, 0.195317, 1.38283e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, -3.14223, -0.0762488, 0.0632067 )
-stream = ExtResource( 22 )
+stream = ExtResource( 23 )
 autoplay = true
 max_distance = 10.0
 
@@ -610,7 +610,7 @@ __meta__ = {
 }
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level3/door3R"]
-stream = ExtResource( 22 )
+stream = ExtResource( 23 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level3/door3R"]
 collision_layer = 0
@@ -632,12 +632,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.0671741, 0, 0.644679, 0, 1.104, 0, -0.1066, 0, 0.406243, 30.1537, 1.146, -10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3L"]
 transform = Transform( 7.93412, 0.195317, -1.90735e-05, -0.0222885, 0.905398, -0.0150481, -0.000536501, 0.0217954, 1.31215, -3.78498, -0.0719867, 0.0302019 )
-stream = ExtResource( 17 )
+stream = ExtResource( 6 )
 autoplay = true
 max_distance = 10.0
 
@@ -647,7 +647,7 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level3/door3L"]
-stream = ExtResource( 17 )
+stream = ExtResource( 6 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level3/door3L"]
 collision_layer = 0
@@ -672,12 +672,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.126, 0, 0, 0, 1.104, 0, 0, 0, 0.762, 48.1159, 1.14637, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4C"]
 transform = Transform( 7.9341, 0.195316, -7.69798e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, -3.18557, -0.0835274, -0.0559143 )
-stream = ExtResource( 10 )
+stream = ExtResource( 14 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
@@ -688,7 +688,7 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level4/door4C"]
-stream = ExtResource( 10 )
+stream = ExtResource( 14 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level4/door4C"]
 collision_layer = 0
@@ -711,8 +711,8 @@ shape = SubResource( 24 )
 transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, 45.9423, 1.146, 10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4R"]
 transform = Transform( 7.93413, 0.195317, 1.38283e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, -3.14223, -0.0762488, 0.0632067 )
@@ -751,12 +751,12 @@ shape = SubResource( 24 )
 transform = Transform( 0.0671741, 0, 0.644679, 0, 1.104, 0, -0.1066, 0, 0.406243, 45.9423, 1.146, -10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
-material/0 = ExtResource( 1 )
-script = ExtResource( 12 )
+material/0 = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4L"]
 transform = Transform( 7.93412, 0.195317, -1.90735e-05, -0.0222885, 0.905398, -0.0150481, -0.000536501, 0.0217954, 1.31215, -3.78498, -0.0719867, 0.0302019 )
-stream = ExtResource( 20 )
+stream = ExtResource( 5 )
 autoplay = true
 max_distance = 10.0
 
@@ -766,7 +766,7 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level4/door4L"]
-stream = ExtResource( 20 )
+stream = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level4/door4L"]
 collision_layer = 0
@@ -914,7 +914,7 @@ material/0 = SubResource( 19 )
 shape = SubResource( 21 )
 
 [node name="Intro Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 autoplay = true
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
@@ -927,7 +927,7 @@ margin_left = 190.0
 margin_top = 106.0
 margin_right = -156.0
 margin_bottom = -86.0
-stream = ExtResource( 8 )
+stream = ExtResource( 19 )
 
 [node name="Marker" type="MeshInstance" parent="."]
 transform = Transform( 0.21, 0, 0, 0, 0.026, 0, 0, 0, 0.23, -5.626, 0, -5.31 )
@@ -940,7 +940,7 @@ cull_mask = 1
 environment = SubResource( 14 )
 current = true
 fov = 47.8125
-script = ExtResource( 5 )
+script = ExtResource( 17 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
 autoplay = "RESET"
@@ -953,7 +953,7 @@ visible = false
 margin_right = 12.0
 margin_bottom = 20.0
 text = "Restart"
-icon = ExtResource( 3 )
+icon = ExtResource( 18 )
 
 [connection signal="input_event" from="floor/StaticBody" to="." method="_on_StaticBody_input_event"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
