@@ -5,9 +5,9 @@ var losevideo := preload("res://assets/anims/Lose.webm");
 
 var Winsequence = []
 
-onready var camera_anim = get_node("player/Camera/AnimationPlayer");
+onready var camera_anim = get_node("Camera/AnimationPlayer");
 onready var player = get_node("player");
-onready var bt_restart = get_node("player/Camera/Restart");
+onready var bt_restart = get_node("Camera/Restart");
 onready var videoplayer := $VideoPlayer 
 
 export(int) var win_level = 4;
@@ -60,3 +60,10 @@ func _on_Button_button_down():
 
 func _on_VideoPlayer_finished():
 	videoplayer.play()
+
+
+func _on_StaticBody_input_event(_camera, event, click_position, _normal, _shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		$Marker.transform.origin = click_position
+		$player.target = click_position
+

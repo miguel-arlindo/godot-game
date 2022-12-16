@@ -1,9 +1,9 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://door1C.tres" type="Material" id=1]
 [ext_resource path="res://checkwin.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://player.gd" type="Script" id=4]
+[ext_resource path="res://assets/texturas/HD-wallpaper-broken-glass-android-colorful-droid-htc-texture-xperiaz-thumbnail.jpeg" type="Texture" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://assets/texturas/floor.jpeg" type="Texture" id=6]
 [ext_resource path="res://3DGodotRobot.tscn" type="PackedScene" id=7]
@@ -23,110 +23,65 @@
 [ext_resource path="res://assets/sound/musics/DnB/DNB_2.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/sound/musics/DnB/DNB_3.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/sound/musics/break/BRK_1.wav" type="AudioStream" id=23]
+[ext_resource path="res://randomizeaudio.gd" type="Script" id=24]
+
+[sub_resource type="GDScript" id=27]
+script/source = "extends KinematicBody
+
+var spin = 0.1 
+export var speed = 5
+export var gravity = -5
+var target = null
+var velocity = Vector3.ZERO
+
+func _physics_process(delta):
+	velocity.y += gravity * delta
+	if target:
+		look_at(target, Vector3.UP)
+		rotation.x = 0
+		velocity = -transform.basis.z * speed;
+		animatebody(\"move_forward\");
+		if transform.origin.distance_to(target) < .5:
+			target = null
+			velocity = Vector3.ZERO
+			animatebody(\"idle\");
+	velocity = move_and_slide(velocity, Vector3.UP)
+	
+
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		if event.relative.x > 0:
+			rotate_y(-lerp(0, spin, event.relative.x/10))
+		elif event.relative.x < 0:
+			rotate_y(-lerp(0, spin, event.relative.x/10))
+		
+func animatebody(action):
+	
+	var modelAnim = get_node(\"3DGodotRobot/AnimationPlayer\");
+	match action:
+		\"idle\":
+			if modelAnim.current_animation != \"Idle-loop\":
+				modelAnim.play(\"Idle-loop\");
+		\"move_forward\":
+			if modelAnim.current_animation != \"Run-loop\":
+				modelAnim.play(\"Run-loop\");
+		\"move_back\":
+			if modelAnim.current_animation != \"Run-loop\":
+				modelAnim.play(\"Run-loop\");
+		\"strafe_left\":
+			if modelAnim.current_animation != \"Run-loop\":
+				modelAnim.play(\"Run-loop\");
+		\"strafe_right\":
+			if modelAnim.current_animation != \"Run-loop\":
+				modelAnim.play(\"Run-loop\");
+		
+
+"
 
 [sub_resource type="CapsuleShape" id=4]
 margin = 0.001
 radius = 0.291
 height = 4.35
-
-[sub_resource type="PanoramaSky" id=13]
-radiance_size = 3
-panorama = ExtResource( 9 )
-
-[sub_resource type="Environment" id=14]
-background_mode = 2
-background_sky = SubResource( 13 )
-background_sky_custom_fov = 115.8
-background_energy = 1.07
-ambient_light_color = Color( 0.772549, 0.784314, 0.964706, 1 )
-ambient_light_energy = 2.5
-fog_color = Color( 0.466667, 0.298039, 0.603922, 1 )
-fog_depth_begin = 8.4
-fog_depth_end = 24.8
-fog_height_max = 78.2
-glow_enabled = true
-glow_intensity = 0.32
-glow_strength = 1.33
-glow_blend_mode = 0
-
-[sub_resource type="Animation" id=25]
-length = 11.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.7, 2.9, 4.3, 5.7, 7.1, 8.8, 10.1, 10.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( -34.425, 179.418, 0 ), Vector3( -21.121, 179.418, 0 ), Vector3( -16.368, 179.413, 0 ), Vector3( -18.0839, 177.05, 0.0434554 ), Vector3( -49.3091, 153.465, 7.01208 ), Vector3( -28.2582, 108.401, 11.8777 ), Vector3( -24.7289, -1.95331, -0.0676484 ), Vector3( -22.1929, -0.463644, -0.0679087 ), Vector3( -18.4629, -0.468302, -0.0662899 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:translation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1.7, 2.9, 4.3, 5.7, 7.1, 8.8, 10.1, 10.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0.00125474, 18.8463, -75.9248 ), Vector3( 0.0761772, 8.82131, -81.4887 ), Vector3( -0.138247, 2.23298, -61.1227 ), Vector3( -4.57346, 2.42761, -43.7063 ), Vector3( 0.503275, 2.83756, -27.1181 ), Vector3( 9.04241, 3.22191, -1.17396 ), Vector3( -0.0305084, 0.956174, 3.46835 ), Vector3( -0.00102028, 1.60845, 1.92879 ), Vector3( -0.0124644, 1.76235, 2.95611 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.7, 2.9, 4.3, 5.7, 7.1, 8.8, 10.1, 10.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 1.1883, 1.02832, 1.02941 ), Vector3( 1.1883, 1.02775, 1.02997 ), Vector3( 1.1883, 1.0276, 1.03012 ), Vector3( 1.18781, 1.0277, 1.03059 ), Vector3( 1.16241, 1.0398, 1.04728 ), Vector3( 1.05147, 1.04794, 1.15127 ), Vector3( 1.18809, 1.02794, 1.03004 ), Vector3( 1.18831, 1.02779, 1.02993 ), Vector3( 1.18831, 1.02767, 1.03005 ) ]
-}
-
-[sub_resource type="Animation" id=26]
-resource_name = "intro"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6, 1, 1.2, 1.5, 2.2, 6, 8, 8.1, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, -178.861, 0 ), Vector3( -7.43185, -178.782, -0.514737 ), Vector3( -13.1858, -178.73, -0.523633 ), Vector3( -16.0627, -178.704, -0.528081 ), Vector3( -20.3844, -179.816, -0.1335 ), Vector3( -41.8056, -178.392, -0.682466 ), Vector3( -52.1621, -178.194, -0.829659 ), Vector3( -59.8654, -177.934, -2.47668 ), Vector3( -60.2505, -177.921, -1.06383 ), Vector3( -18.0589, -0.179653, -0.599256 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 1, 1.2, 1.5, 2.2, 6, 7.2, 8, 8.1, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, -75.839 ), Vector3( 0.0798026, 0.316249, -71.9019 ), Vector3( -0.000328377, 0.527619, -69.2299 ), Vector3( 0.0161317, 1.67855, -67.6841 ), Vector3( -0.0527725, 4.97396, -64.9486 ), Vector3( -0.0665088, 5.97534, -59.9205 ), Vector3( -0.536453, 7.35374, -17.5452 ), Vector3( -0.442874, 7.0847, -6.87701 ), Vector3( -0.201303, 6.90051, 0.220292 ), Vector3( 0.412824, 6.89016, 1.10823 ), Vector3( -0.0282942, 1.71997, 2.0893 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6, 1, 1.2, 1.5, 2.2, 6, 8, 8.1, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 1.18822, 1.02739, 1.03043 ), Vector3( 1.18823, 1.02743, 1.03039 ), Vector3( 1.18823, 1.02753, 1.03029 ), Vector3( 1.18823, 1.0276, 1.03022 ), Vector3( 1.18832, 1.02773, 1.02998 ), Vector3( 1.18823, 1.02869, 1.02912 ), Vector3( 1.18823, 1.02924, 1.02857 ), Vector3( 1.18823, 1.02962, 1.02819 ), Vector3( 1.18822, 1.02964, 1.02818 ), Vector3( 1.18829, 1.02768, 1.03006 ) ]
-}
 
 [sub_resource type="QuadMesh" id=7]
 size = Vector2( 15, 15 )
@@ -198,6 +153,126 @@ emission_texture = SubResource( 23 )
 [sub_resource type="ConcavePolygonShape" id=21]
 data = PoolVector3Array( -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5 )
 
+[sub_resource type="CylinderMesh" id=28]
+
+[sub_resource type="AnimatedTexture" id=34]
+
+[sub_resource type="SpatialMaterial" id=33]
+albedo_texture = ExtResource( 4 )
+metallic = 0.16
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color( 0.14902, 0.0156863, 0.0156863, 1 )
+emission_energy = 2.55
+emission_operator = 0
+emission_on_uv2 = false
+rim_enabled = true
+rim = 1.0
+rim_tint = 0.93
+refraction_enabled = true
+refraction_scale = 0.48
+refraction_texture = SubResource( 34 )
+refraction_texture_channel = 3
+
+[sub_resource type="PanoramaSky" id=13]
+radiance_size = 3
+panorama = ExtResource( 9 )
+
+[sub_resource type="Environment" id=14]
+background_mode = 2
+background_sky = SubResource( 13 )
+background_sky_custom_fov = 115.8
+background_energy = 1.07
+ambient_light_color = Color( 0.772549, 0.784314, 0.964706, 1 )
+ambient_light_energy = 2.5
+fog_color = Color( 0.466667, 0.298039, 0.603922, 1 )
+fog_depth_begin = 8.4
+fog_depth_end = 24.8
+fog_height_max = 78.2
+glow_enabled = true
+glow_intensity = 0.32
+glow_strength = 1.33
+glow_blend_mode = 0
+
+[sub_resource type="Animation" id=25]
+length = 11.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4, 3, 4.3, 5.5, 7.1, 8.8, 10.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -36.335, 90, 0 ), Vector3( -67.053, 90, 0 ), Vector3( -14.493, 90, 3.6097e-14 ), Vector3( -24.5159, 94.7973, 0 ), Vector3( -16.8276, 92.8191, -2.14639 ), Vector3( -27.811, 25.0703, -2.10514 ), Vector3( -22.8936, -73.4601, -4.93395 ), Vector3( -39.056, -90, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.4, 3, 4.3, 5.5, 7.1, 8.8, 10.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 64.704, 25.114, 0 ), Vector3( 61.256, 18.161, 0 ), Vector3( 49.954, 2.247, 0 ), Vector3( 33.974, 3.252, -3.966 ), Vector3( 20.755, 2.974, 2.287 ), Vector3( -6.112, 4.517, 7.382 ), Vector3( -17.0167, 3.16133, 0.634866 ), Vector3( -15.7789, 8.28441, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.4, 3, 4.3, 5.5, 7.1, 8.8, 10.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "intro"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1, 1.2, 1.5, 2.2, 6, 8, 8.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -178.861, 0 ), Vector3( -7.43185, -178.782, -0.514737 ), Vector3( -13.1858, -178.73, -0.523633 ), Vector3( -16.0627, -178.704, -0.528081 ), Vector3( -20.3844, -179.816, -0.1335 ), Vector3( -41.8056, -178.392, -0.682466 ), Vector3( -52.1621, -178.194, -0.829659 ), Vector3( -59.8654, -177.934, -2.47668 ), Vector3( -60.2505, -177.921, -1.06383 ), Vector3( -18.0589, -0.179653, -0.599256 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1, 1.2, 1.5, 2.2, 6, 7.2, 8, 8.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -75.839 ), Vector3( 0.0798026, 0.316249, -71.9019 ), Vector3( -0.000328377, 0.527619, -69.2299 ), Vector3( 0.0161317, 1.67855, -67.6841 ), Vector3( -0.0527725, 4.97396, -64.9486 ), Vector3( -0.0665088, 5.97534, -59.9205 ), Vector3( -0.536453, 7.35374, -17.5452 ), Vector3( -0.442874, 7.0847, -6.87701 ), Vector3( -0.201303, 6.90051, 0.220292 ), Vector3( 0.412824, 6.89016, 1.10823 ), Vector3( -0.0282942, 1.71997, 2.0893 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1, 1.2, 1.5, 2.2, 6, 8, 8.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.18822, 1.02739, 1.03043 ), Vector3( 1.18823, 1.02743, 1.03039 ), Vector3( 1.18823, 1.02753, 1.03029 ), Vector3( 1.18823, 1.0276, 1.03022 ), Vector3( 1.18832, 1.02773, 1.02998 ), Vector3( 1.18823, 1.02869, 1.02912 ), Vector3( 1.18823, 1.02924, 1.02857 ), Vector3( 1.18823, 1.02962, 1.02819 ), Vector3( 1.18822, 1.02964, 1.02818 ), Vector3( 1.18829, 1.02768, 1.03006 ) ]
+}
+
 [node name="level1" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17357, 0, 0 )
 script = ExtResource( 2 )
@@ -206,32 +281,11 @@ script = ExtResource( 2 )
 transform = Transform( -3.67841e-08, 0, -0.970556, 0, 0.973362, 0, 0.841523, 0, -4.24244e-08, -9.92137, 0.141034, 0 )
 collision_layer = 3
 collision_mask = 3
-script = ExtResource( 4 )
+script = SubResource( 27 )
 
 [node name="CollisionShape" type="CollisionShape" parent="player"]
 transform = Transform( 1, -4.88498e-15, -3.17637e-22, 0, -6.07204e-09, 0.258671, -2.84217e-14, -0.138912, -1.13069e-08, 2.84217e-13, 0.588892, 0.0677938 )
 shape = SubResource( 4 )
-
-[node name="Camera" type="Camera" parent="player"]
-transform = Transform( -1.18824, -0.00590497, 0.00862505, 0, 0.848227, 0.581953, -0.0120702, 0.581307, -0.849082, 0.00125474, 18.8463, -75.9248 )
-cull_mask = 1
-environment = SubResource( 14 )
-current = true
-fov = 70.2
-script = ExtResource( 5 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="player/Camera"]
-autoplay = "RESET"
-reset_on_save = false
-anims/RESET = SubResource( 25 )
-anims/intro = SubResource( 26 )
-
-[node name="Restart" type="Button" parent="player/Camera"]
-visible = false
-margin_right = 12.0
-margin_bottom = 20.0
-text = "Restart"
-icon = ExtResource( 3 )
 
 [node name="3DGodotRobot" parent="player" instance=ExtResource( 7 )]
 transform = Transform( -0.771264, 0, -6.74261e-08, 0, 0.771264, 0, 6.74261e-08, 0, -0.771264, 0, 0, 0 )
@@ -268,6 +322,8 @@ stream = ExtResource( 14 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
+script = ExtResource( 24 )
+audio_files = [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 14 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1C"]
 transform = Transform( 7.9341, 0.195316, -7.67488e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, 0.852625, -0.0948713, -0.0561874 )
@@ -873,5 +929,32 @@ margin_right = -156.0
 margin_bottom = -86.0
 stream = ExtResource( 8 )
 
-[connection signal="button_down" from="player/Camera/Restart" to="." method="_on_Button_button_down"]
+[node name="Marker" type="MeshInstance" parent="."]
+transform = Transform( 0.21, 0, 0, 0, 0.026, 0, 0, 0, 0.23, -5.626, 0, -5.31 )
+mesh = SubResource( 28 )
+material/0 = SubResource( 33 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 0.63008, -0.776531, 0, 0.776531, 0.63008, 1, 2.75417e-08, -3.39432e-08, -15.7789, 8.28441, 0 )
+cull_mask = 1
+environment = SubResource( 14 )
+current = true
+fov = 47.8125
+script = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
+autoplay = "RESET"
+reset_on_save = false
+anims/RESET = SubResource( 25 )
+anims/intro = SubResource( 26 )
+
+[node name="Restart" type="Button" parent="Camera"]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Restart"
+icon = ExtResource( 3 )
+
+[connection signal="input_event" from="floor/StaticBody" to="." method="_on_StaticBody_input_event"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="button_down" from="Camera/Restart" to="." method="_on_Button_button_down"]
