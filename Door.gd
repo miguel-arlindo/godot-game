@@ -33,9 +33,9 @@ func _on_Area_body_exited(body):
 			audio_fx.play();
 			audio_global.play(audio.get_playback_position())
 			print (level.get_name());
-			var snd_style = audio_global.stream.resource_path.get_file().get_slice("_", 0);
+			#var snd_style = audio_global.stream.resource_path.get_file().get_slice("_", 0);
 			var door = int(get_node(".").get_name().substr(4, 1));
-			level.Winsequence.push_back(snd_style);
+			#level.Winsequence.push_back(snd_style);
 			level.checkWins(door);
 
 

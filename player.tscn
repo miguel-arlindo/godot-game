@@ -1,7 +1,7 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Door.gd" type="Script" id=1]
-[ext_resource path="res://randomizeaudio.gd" type="Script" id=2]
+[ext_resource path="res://scripts_audio/level1/level1_door_middle_audio.gd" type="Script" id=2]
 [ext_resource path="res://assets/texturas/images.jpeg" type="Texture" id=3]
 [ext_resource path="res://assets/sound/musics/break/BRK_2.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sound/musics/break/BRK_4.wav" type="AudioStream" id=5]
@@ -24,6 +24,18 @@
 [ext_resource path="res://assets/sound/musics/break/BRK_1.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/sound/musics/DnB/DNB_3.wav" type="AudioStream" id=23]
 [ext_resource path="res://assets/sound/musics/DnB/DNB_1.wav" type="AudioStream" id=24]
+[ext_resource path="res://scripts_audio/level1/level1_door_right_audio.gd" type="Script" id=25]
+[ext_resource path="res://scripts_audio/level1/level1_door_left_audio.gd" type="Script" id=26]
+[ext_resource path="res://scripts_audio/level2/level2_door_right_audio.gd" type="Script" id=27]
+[ext_resource path="res://scripts_audio/level2/level2_door_left_audio.gd" type="Script" id=28]
+[ext_resource path="res://scripts_audio/level2/level2_door_middle_audio.gd" type="Script" id=29]
+[ext_resource path="res://scripts_audio/level3/level3_door_middle_audio.gd" type="Script" id=30]
+[ext_resource path="res://scripts_audio/level4/level4_door_middle_audio.gd" type="Script" id=31]
+[ext_resource path="res://scripts_audio/level3/level3_door_right_audio.gd" type="Script" id=32]
+[ext_resource path="res://scripts_audio/level4/level4_door_left_audio.gd" type="Script" id=33]
+[ext_resource path="res://scripts_audio/level4/level4_door_right_audio.gd" type="Script" id=34]
+[ext_resource path="res://scripts_audio/level3/level3_door_left_audio.gd" type="Script" id=35]
+[ext_resource path="res://audio_global_level1_middle.gd" type="Script" id=36]
 
 [sub_resource type="GDScript" id=27]
 script/source = "extends KinematicBody
@@ -318,7 +330,6 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1C"]
 transform = Transform( 7.9341, 0.195316, -7.69798e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, -3.18557, -0.0835274, -0.0559143 )
-stream = ExtResource( 16 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
@@ -331,7 +342,8 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level1/door1C"]
-stream = ExtResource( 16 )
+script = ExtResource( 36 )
+audio_files = [ ExtResource( 24 ), ExtResource( 22 ), ExtResource( 16 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level1/door1C"]
 collision_layer = 0
@@ -359,9 +371,10 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1R"]
 transform = Transform( 7.93413, 0.195317, 1.38283e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, -3.14223, -0.0762488, 0.0632067 )
-stream = ExtResource( 24 )
 autoplay = true
 max_distance = 10.0
+script = ExtResource( 25 )
+audio_files = [ ExtResource( 24 ), ExtResource( 22 ), ExtResource( 16 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1R"]
 transform = Transform( 7.93413, 0.195317, 1.40667e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, 0.632397, -0.0942528, -0.0561724 )
@@ -399,9 +412,10 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1L"]
 transform = Transform( 7.93412, 0.195317, -1.90735e-05, -0.0222885, 0.905398, -0.0150481, -0.000536501, 0.0217954, 1.31215, -3.78498, -0.0719867, 0.0302019 )
-stream = ExtResource( 22 )
 autoplay = true
 max_distance = 10.0
+script = ExtResource( 26 )
+audio_files = [ ExtResource( 24 ), ExtResource( 22 ), ExtResource( 16 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level1/door1L"]
 transform = Transform( 7.93653, 0, -1.83582e-05, 0, 0.905797, 0, -5.96046e-08, 0, 1.31234, 0, 0, 0 )
@@ -439,10 +453,11 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2C"]
 transform = Transform( 7.9341, 0.195316, -7.69798e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, -3.18557, -0.0835274, -0.0559143 )
-stream = ExtResource( 20 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
+script = ExtResource( 29 )
+audio_files = [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 11 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2C"]
 transform = Transform( 7.9341, 0.195316, -7.67488e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, 0.852625, -0.0948713, -0.0561874 )
@@ -478,9 +493,10 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2R"]
 transform = Transform( 7.93413, 0.195317, 1.38283e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, -3.14223, -0.0762488, 0.0632067 )
-stream = ExtResource( 11 )
 autoplay = true
 max_distance = 10.0
+script = ExtResource( 27 )
+audio_files = [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 11 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2R"]
 transform = Transform( 7.93413, 0.195317, 1.40667e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, 0.632397, -0.0942528, -0.0561724 )
@@ -518,9 +534,10 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2L"]
 transform = Transform( 7.93412, 0.195317, -1.90735e-05, -0.0222885, 0.905398, -0.0150481, -0.000536501, 0.0217954, 1.31215, -3.78498, -0.0719867, 0.0302019 )
-stream = ExtResource( 4 )
 autoplay = true
 max_distance = 10.0
+script = ExtResource( 28 )
+audio_files = [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 11 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level2/door2L"]
 transform = Transform( 7.93653, 0, -1.83582e-05, 0, 0.905797, 0, -5.96046e-08, 0, 1.31234, 0, 0, 0 )
@@ -558,10 +575,11 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3C"]
 transform = Transform( 7.9341, 0.195316, -7.69798e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, -3.18557, -0.0835274, -0.0559143 )
-stream = ExtResource( 21 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
+script = ExtResource( 30 )
+audio_files = [ ExtResource( 21 ), ExtResource( 23 ), ExtResource( 6 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3C"]
 transform = Transform( 7.9341, 0.195316, -7.67488e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, 0.852625, -0.0948713, -0.0561874 )
@@ -597,9 +615,10 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3R"]
 transform = Transform( 7.93413, 0.195317, 1.38283e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, -3.14223, -0.0762488, 0.0632067 )
-stream = ExtResource( 23 )
 autoplay = true
 max_distance = 10.0
+script = ExtResource( 32 )
+audio_files = [ ExtResource( 21 ), ExtResource( 23 ), ExtResource( 6 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3R"]
 transform = Transform( 7.93413, 0.195317, 1.40667e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, 0.632397, -0.0942528, -0.0561724 )
@@ -637,9 +656,10 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3L"]
 transform = Transform( 7.93412, 0.195317, -1.90735e-05, -0.0222885, 0.905398, -0.0150481, -0.000536501, 0.0217954, 1.31215, -3.78498, -0.0719867, 0.0302019 )
-stream = ExtResource( 6 )
 autoplay = true
 max_distance = 10.0
+script = ExtResource( 35 )
+audio_files = [ ExtResource( 21 ), ExtResource( 23 ), ExtResource( 6 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level3/door3L"]
 transform = Transform( 7.93653, 0, -1.83582e-05, 0, 0.905797, 0, -5.96046e-08, 0, 1.31234, 0, 0, 0 )
@@ -677,10 +697,11 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4C"]
 transform = Transform( 7.9341, 0.195316, -7.69798e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, -3.18557, -0.0835274, -0.0559143 )
-stream = ExtResource( 14 )
 autoplay = true
 max_distance = 15.0
 doppler_tracking = 1
+script = ExtResource( 31 )
+audio_files = [ ExtResource( 5 ), ExtResource( 14 ), ExtResource( 13 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4C"]
 transform = Transform( 7.9341, 0.195316, -7.67488e-08, -0.0222884, 0.905398, -0.0150481, -0.00053653, 0.0217954, 1.31215, 0.852625, -0.0948713, -0.0561874 )
@@ -716,9 +737,10 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4R"]
 transform = Transform( 7.93413, 0.195317, 1.38283e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, -3.14223, -0.0762488, 0.0632067 )
-stream = ExtResource( 13 )
 autoplay = true
 max_distance = 10.0
+script = ExtResource( 34 )
+audio_files = [ ExtResource( 5 ), ExtResource( 14 ), ExtResource( 13 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4R"]
 transform = Transform( 7.93413, 0.195317, 1.40667e-05, -0.0222885, 0.905398, -0.0150481, -0.000536561, 0.0217954, 1.31215, 0.632397, -0.0942528, -0.0561724 )
@@ -756,9 +778,10 @@ script = ExtResource( 1 )
 
 [node name="audio" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4L"]
 transform = Transform( 7.93412, 0.195317, -1.90735e-05, -0.0222885, 0.905398, -0.0150481, -0.000536501, 0.0217954, 1.31215, -3.78498, -0.0719867, 0.0302019 )
-stream = ExtResource( 5 )
 autoplay = true
 max_distance = 10.0
+script = ExtResource( 33 )
+audio_files = [ ExtResource( 5 ), ExtResource( 14 ), ExtResource( 13 ) ]
 
 [node name="audio_fx" type="AudioStreamPlayer3D" parent="DOORS/Doors level4/door4L"]
 transform = Transform( 7.93653, 0, -1.83582e-05, 0, 0.905797, 0, -5.96046e-08, 0, 1.31234, 0, 0, 0 )
@@ -930,7 +953,7 @@ margin_bottom = -86.0
 stream = ExtResource( 19 )
 
 [node name="Marker" type="MeshInstance" parent="."]
-transform = Transform( 0.21, 0, 0, 0, 0.026, 0, 0, 0, 0.23, -5.626, 0, -5.31 )
+transform = Transform( 0.21, 0, 0, 0, 0.026, 0, 0, 0, 0.23, -9.17156, 0.0682151, -0.0333568 )
 mesh = SubResource( 28 )
 material/0 = SubResource( 33 )
 
