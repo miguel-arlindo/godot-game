@@ -322,7 +322,7 @@ shape = SubResource( 8 )
 [node name="Doors level1" type="Node" parent="DOORS"]
 
 [node name="door1C" type="MeshInstance" parent="DOORS/Doors level1"]
-transform = Transform( 0.126, 0, 0, 0, 1.104, 0, 0, 0, 0.762, 0.17357, 1.14637, 0 )
+transform = Transform( 0.126, 0, 0, 0, 1.80897, 0, 0, 0, 0.844687, 0.17357, 1.83697, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -363,7 +363,7 @@ transform = Transform( 0.188, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 24 )
 
 [node name="door1R" type="MeshInstance" parent="DOORS/Doors level1"]
-transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, -2, 1.146, 10.416 )
+transform = Transform( 0.073341, 0, -0.681974, 0, 1.80897, 0, 0.116387, 0, 0.429746, -2, 1.8366, 10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -404,7 +404,7 @@ audio_bus_name = "sfx"
 shape = SubResource( 24 )
 
 [node name="door1L" type="MeshInstance" parent="DOORS/Doors level1"]
-transform = Transform( 0.0671741, 0, 0.644679, 0, 1.104, 0, -0.1066, 0, 0.406243, -2, 1.146, -10.416 )
+transform = Transform( 0.0610071, 0, 0.681974, 0, 1.80897, 0, -0.0968135, 0, 0.429746, -2, 1.8366, -10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -445,7 +445,7 @@ shape = SubResource( 24 )
 [node name="Doors level2" type="Node" parent="DOORS"]
 
 [node name="door2C" type="MeshInstance" parent="DOORS/Doors level2"]
-transform = Transform( 0.126, 0, 0, 0, 1.104, 0, 0, 0, 0.762, 16.0689, 1.14637, 0 )
+transform = Transform( 0.126, 0, 0, 0, 1.809, 0, 0, 0, 0.845, 9.45089, 1.14637, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -485,7 +485,7 @@ transform = Transform( 0.188, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 24 )
 
 [node name="door2R" type="MeshInstance" parent="DOORS/Doors level2"]
-transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, 13.8953, 1.146, 10.416 )
+transform = Transform( 0.067174, 0, -0.714899, 0, 1.809, 0, 0.1066, 0, 0.450494, 7.27729, 1.146, 10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -526,7 +526,7 @@ audio_bus_name = "sfx"
 shape = SubResource( 24 )
 
 [node name="door2L" type="MeshInstance" parent="DOORS/Doors level2"]
-transform = Transform( 0.0671741, 0, 0.644679, 0, 1.104, 0, -0.1066, 0, 0.406243, 13.8953, 1.146, -10.416 )
+transform = Transform( 0.0671741, 0, 0.714899, 0, 1.809, 0, -0.1066, 0, 0.450494, 7.27729, 1.146, -10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -567,7 +567,7 @@ shape = SubResource( 24 )
 [node name="Doors level3" type="Node" parent="DOORS"]
 
 [node name="door3C" type="MeshInstance" parent="DOORS/Doors level3"]
-transform = Transform( 0.126, 0, 0, 0, 1.104, 0, 0, 0, 0.762, 32.3273, 1.14637, 0 )
+transform = Transform( 0.126, 0, 0, 0, 1.809, 0, 0, 0, 0.845, 18.5341, 1.14637, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -607,7 +607,7 @@ transform = Transform( 0.188, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 24 )
 
 [node name="door3R" type="MeshInstance" parent="DOORS/Doors level3"]
-transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, 30.1537, 1.146, 10.416 )
+transform = Transform( 0.067174, 0, -0.714899, 0, 1.809, 0, 0.1066, 0, 0.450494, 16.3605, 1.146, 10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -648,7 +648,7 @@ audio_bus_name = "sfx"
 shape = SubResource( 24 )
 
 [node name="door3L" type="MeshInstance" parent="DOORS/Doors level3"]
-transform = Transform( 0.0671741, 0, 0.644679, 0, 1.104, 0, -0.1066, 0, 0.406243, 30.1537, 1.146, -10.416 )
+transform = Transform( 0.0671741, 0, 0.714899, 0, 1.809, 0, -0.1066, 0, 0.450494, 16.3605, 1.146, -10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -689,7 +689,7 @@ shape = SubResource( 24 )
 [node name="Doors level4" type="Node" parent="DOORS"]
 
 [node name="door4C" type="MeshInstance" parent="DOORS/Doors level4"]
-transform = Transform( 0.126, 0, 0, 0, 1.104, 0, 0, 0, 0.762, 48.1159, 1.14637, 0 )
+transform = Transform( 0.126, 0, 0, 0, 1.809, 0, 0, 0, 0.845, 27.553, 1.14637, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -729,7 +729,7 @@ transform = Transform( 0.188, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 24 )
 
 [node name="door4R" type="MeshInstance" parent="DOORS/Doors level4"]
-transform = Transform( 0.067174, 0, -0.644679, 0, 1.104, 0, 0.1066, 0, 0.406243, 45.9423, 1.146, 10.416 )
+transform = Transform( 0.067174, 0, -0.714899, 0, 1.809, 0, 0.1066, 0, 0.450494, 25.3794, 1.146, 10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -770,7 +770,7 @@ audio_bus_name = "sfx"
 shape = SubResource( 24 )
 
 [node name="door4L" type="MeshInstance" parent="DOORS/Doors level4"]
-transform = Transform( 0.0671741, 0, 0.644679, 0, 1.104, 0, -0.1066, 0, 0.406243, 45.9423, 1.146, -10.416 )
+transform = Transform( 0.0671741, 0, 0.714899, 0, 1.809, 0, -0.1066, 0, 0.450494, 25.3794, 1.146, -10.416 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 8 )
@@ -849,7 +849,7 @@ shape = SubResource( 21 )
 [node name="Walls Level 2" type="Node" parent="WALLS"]
 
 [node name="wall1A" type="MeshInstance" parent="WALLS/Walls Level 2"]
-transform = Transform( 1.5201, 0, 0.171738, 0, 1.622, 0, -8.85852, 0, 0.0294699, 15.3737, 0.848, 5.38815 )
+transform = Transform( 1.5201, 0, 0.171738, 0, 1.622, 0, -8.85852, 0, 0.0294699, 8.75569, 0.848, 5.38815 )
 include_in_bound = false
 allow_merging = false
 mesh = SubResource( 17 )
@@ -863,7 +863,7 @@ material/0 = SubResource( 19 )
 shape = SubResource( 21 )
 
 [node name="wall1B" type="MeshInstance" parent="WALLS/Walls Level 2"]
-transform = Transform( -1.49675, 0, 0.171815, 0, 1.622, 0, -8.8625, 0, -0.0290172, 15.2567, 0.848, -5.39159 )
+transform = Transform( -1.49675, 0, 0.171815, 0, 1.622, 0, -8.8625, 0, -0.0290172, 8.63869, 0.848, -5.39159 )
 include_in_bound = false
 allow_merging = false
 mesh = SubResource( 17 )
@@ -879,7 +879,7 @@ shape = SubResource( 21 )
 [node name="Walls Level 3" type="Node" parent="WALLS"]
 
 [node name="wall1A" type="MeshInstance" parent="WALLS/Walls Level 3"]
-transform = Transform( 1.5201, 0, 0.171738, 0, 1.622, 0, -8.85852, 0, 0.0294699, 31.5324, 0.848, 5.38815 )
+transform = Transform( 1.5201, 0, 0.171738, 0, 1.622, 0, -8.85852, 0, 0.0294699, 17.7392, 0.848, 5.38815 )
 include_in_bound = false
 allow_merging = false
 mesh = SubResource( 17 )
@@ -893,7 +893,7 @@ material/0 = SubResource( 19 )
 shape = SubResource( 21 )
 
 [node name="wall1B" type="MeshInstance" parent="WALLS/Walls Level 3"]
-transform = Transform( -1.49675, 0, 0.171815, 0, 1.622, 0, -8.8625, 0, -0.0290172, 31.4154, 0.848, -5.39159 )
+transform = Transform( -1.49675, 0, 0.171815, 0, 1.622, 0, -8.8625, 0, -0.0290172, 17.6222, 0.848, -5.39159 )
 include_in_bound = false
 allow_merging = false
 mesh = SubResource( 17 )
@@ -909,7 +909,7 @@ shape = SubResource( 21 )
 [node name="Walls Level 4" type="Node" parent="WALLS"]
 
 [node name="wall1A" type="MeshInstance" parent="WALLS/Walls Level 4"]
-transform = Transform( 1.5201, 0, 0.171738, 0, 1.622, 0, -8.85852, 0, 0.0294699, 47.2964, 0.848, 5.38815 )
+transform = Transform( 1.5201, 0, 0.171738, 0, 1.622, 0, -8.85852, 0, 0.0294699, 26.7335, 0.848, 5.38815 )
 include_in_bound = false
 allow_merging = false
 mesh = SubResource( 17 )
@@ -923,7 +923,7 @@ material/0 = SubResource( 19 )
 shape = SubResource( 21 )
 
 [node name="wall1B" type="MeshInstance" parent="WALLS/Walls Level 4"]
-transform = Transform( -1.49675, 0, 0.171815, 0, 1.622, 0, -8.8625, 0, -0.0290172, 47.1794, 0.848, -5.39159 )
+transform = Transform( -1.49675, 0, 0.171815, 0, 1.622, 0, -8.8625, 0, -0.0290172, 26.6165, 0.848, -5.39159 )
 include_in_bound = false
 allow_merging = false
 mesh = SubResource( 17 )
