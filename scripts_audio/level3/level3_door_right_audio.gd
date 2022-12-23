@@ -19,6 +19,7 @@ func choice(escolha):
 	escolha2 = random_index
 #	print( "escolha1 - ",  escolha, " || escolha2 - ",random_index)
 	$".".stream = audio_files[random_index]
+	$"../audio_global".stream = audio_files[random_index]
 	$".".play()
 	if signal_emmited == false:
 		emit_signal("choice_middle_right", escolha, escolha2)

@@ -16,6 +16,7 @@ func play_random():
 	random_index = randi() % audio_files.size()
 	escolha = random_index
 	$".".stream = audio_files[random_index]
+	$"../audio_global".stream = audio_files[random_index]
 	$".".play()
 
 func _process(delta):

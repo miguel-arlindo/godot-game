@@ -23,6 +23,7 @@ func choice(escolha1, escolha2):
 		random_index = 0
 	print("LEVEL1 - ", " LEFT - ",random_index ,"|| MIDDLE - ",  escolha1 , " || RIGHT - ", escolha2 )
 	$".".stream = audio_files[random_index]
+	$"../audio_global".stream = audio_files[random_index]
 	$".".play()
 
 

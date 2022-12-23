@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Door.gd" type="Script" id=1]
 [ext_resource path="res://scripts_audio/level1/level1_door_middle_audio.gd" type="Script" id=2]
@@ -36,6 +36,17 @@
 [ext_resource path="res://scripts_audio/level4/level4_door_right_audio.gd" type="Script" id=34]
 [ext_resource path="res://scripts_audio/level3/level3_door_left_audio.gd" type="Script" id=35]
 [ext_resource path="res://audio_global_level1_middle.gd" type="Script" id=36]
+[ext_resource path="res://audio_global_level1_Right.gd" type="Script" id=37]
+[ext_resource path="res://audio_global_level1_left.gd" type="Script" id=38]
+[ext_resource path="res://audio_global_level2_middle.gd" type="Script" id=39]
+[ext_resource path="res://audio_global_level2_left.gd" type="Script" id=40]
+[ext_resource path="res://audio_global_level2_right.gd" type="Script" id=41]
+[ext_resource path="res://audio_global_level4_middle.gd" type="Script" id=42]
+[ext_resource path="res://audio_global_level4_left.gd" type="Script" id=43]
+[ext_resource path="res://audio_global_level4_right.gd" type="Script" id=44]
+[ext_resource path="res://audio_global_level3_right.gd" type="Script" id=45]
+[ext_resource path="res://audio_global_level3_left.gd" type="Script" id=46]
+[ext_resource path="res://audio_global_level3_middle.gd" type="Script" id=47]
 
 [sub_resource type="GDScript" id=27]
 script/source = "extends KinematicBody
@@ -385,7 +396,8 @@ __meta__ = {
 }
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level1/door1R"]
-stream = ExtResource( 24 )
+script = ExtResource( 37 )
+audio_files = [ ExtResource( 24 ), ExtResource( 22 ), ExtResource( 16 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level1/door1R"]
 collision_layer = 0
@@ -423,7 +435,8 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level1/door1L"]
-stream = ExtResource( 22 )
+script = ExtResource( 38 )
+audio_files = [ ExtResource( 24 ), ExtResource( 22 ), ExtResource( 16 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level1/door1L"]
 collision_layer = 0
@@ -465,7 +478,8 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level2/door2C"]
-stream = ExtResource( 20 )
+script = ExtResource( 39 )
+audio_files = [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 11 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level2/door2C"]
 collision_layer = 0
@@ -507,7 +521,8 @@ __meta__ = {
 }
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level2/door2R"]
-stream = ExtResource( 11 )
+script = ExtResource( 41 )
+audio_files = [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 11 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level2/door2R"]
 collision_layer = 0
@@ -545,7 +560,8 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level2/door2L"]
-stream = ExtResource( 4 )
+script = ExtResource( 40 )
+audio_files = [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 11 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level2/door2L"]
 collision_layer = 0
@@ -587,7 +603,8 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level3/door3C"]
-stream = ExtResource( 21 )
+script = ExtResource( 47 )
+audio_files = [ ExtResource( 21 ), ExtResource( 23 ), ExtResource( 6 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level3/door3C"]
 collision_layer = 0
@@ -629,7 +646,8 @@ __meta__ = {
 }
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level3/door3R"]
-stream = ExtResource( 23 )
+script = ExtResource( 45 )
+audio_files = [ ExtResource( 21 ), ExtResource( 23 ), ExtResource( 6 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level3/door3R"]
 collision_layer = 0
@@ -667,7 +685,8 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level3/door3L"]
-stream = ExtResource( 6 )
+script = ExtResource( 46 )
+audio_files = [ ExtResource( 21 ), ExtResource( 23 ), ExtResource( 6 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level3/door3L"]
 collision_layer = 0
@@ -709,7 +728,8 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level4/door4C"]
-stream = ExtResource( 14 )
+script = ExtResource( 42 )
+audio_files = [ ExtResource( 5 ), ExtResource( 14 ), ExtResource( 13 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level4/door4C"]
 collision_layer = 0
@@ -751,7 +771,8 @@ __meta__ = {
 }
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level4/door4R"]
-stream = ExtResource( 13 )
+script = ExtResource( 44 )
+audio_files = [ ExtResource( 5 ), ExtResource( 14 ), ExtResource( 13 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level4/door4R"]
 collision_layer = 0
@@ -789,7 +810,8 @@ unit_db = 9.0
 max_distance = 10.0
 
 [node name="audio_global" type="AudioStreamPlayer" parent="DOORS/Doors level4/door4L"]
-stream = ExtResource( 5 )
+script = ExtResource( 43 )
+audio_files = [ ExtResource( 5 ), ExtResource( 14 ), ExtResource( 13 ) ]
 
 [node name="StaticBody" type="StaticBody" parent="DOORS/Doors level4/door4L"]
 collision_layer = 0
