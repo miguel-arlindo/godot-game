@@ -1,35 +1,48 @@
 extends KinematicBody
 
+var spin = 0.1 
+export var speed = 5
+export var gravity = -5
+var target = null
+var velocity = Vector3.ZERO
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func _physics_process(delta):
+	velocity.y += gravity * delta
+	if target:
+		look_at(target, Vector3.UP)
+		rotation.x = 0
+		velocity = -transform.basis.z * speed;
+		animatebody("move_forward");
+		if transform.origin.distance_to(target) < .5:
+			target = null
+			velocity = Vector3.ZERO
+			animatebody("idle");
+	velocity = move_and_slide(velocity, Vector3.UP)
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		if event.relative.x > 0:
+			rotate_y(-lerp(0, spin, event.relative.x/10))
+		elif event.relative.x < 0:
+			rotate_y(-lerp(0, spin, event.relative.x/10))
 
+func animatebody(action):
 
-func _process(delta):
-	if Input.is_action_pressed("ui_up"):
-		vector.y = -1
-	if Input.is_action_pressed("ui_down"):
-		vector.y = 1
-	if Input.is_action_pressed("ui_right"):
-		vector.x = 1
-	if Input.is_action_pressed("ui_left"):
-		vector.x = -1
-		look_at(ScreenPointToray, Vector3.UP)
-		
-func ScreenPointToRay ():
-	var spaceState = get_world().direct_space_state
-	
-	var mousePos = get_viewport().get_mouse_position()
-	var camera = get_tree().root.get_camera()
-	var rayOrigin = camera.project_ray_origin(mousePos)
-	var rayEnd = rayOrigiin + camera.project_ray_normal(mousePos) * 2000
-	var rayArray = spaceState.intersect_ray(rayOrigin, rayEnd)
-	if rayArray.has("position"):
-		return rayArray["position"]
-	return Vector3()
+	var modelAnim = get_node("3DGodotRobot/AnimationPlayer");
+	match action:
+		"idle":
+			if modelAnim.current_animation != "Idle-loop":
+				modelAnim.play("Idle-loop");
+		"move_forward":
+			if modelAnim.current_animation != "Run-loop":
+				modelAnim.play("Run-loop");
+		"move_back":
+			if modelAnim.current_animation != "Run-loop":
+				modelAnim.play("Run-loop");
+		"strafe_left":
+			if modelAnim.current_animation != "Run-loop":
+				modelAnim.play("Run-loop");
+		"strafe_right":
+			if modelAnim.current_animation != "Run-loop":
+				modelAnim.play("Run-loop");
