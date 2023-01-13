@@ -177,7 +177,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.4, 3, 4.3, 5.5, 7.1, 8.8, 10.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -36.335, 90, 0 ), Vector3( -67.053, 90, 0 ), Vector3( -14.493, 90, 3.6097e-14 ), Vector3( -24.5159, 94.7973, 0 ), Vector3( -16.8276, 92.8191, -2.14639 ), Vector3( -27.811, 25.0703, -2.10514 ), Vector3( -22.8936, -73.4601, -4.93395 ), Vector3( -39.056, -90, 0 ) ]
+"values": [ Vector3( -36.335, 90, 0 ), Vector3( -67.053, 90, 0 ), Vector3( -14.493, 90, 3.6097e-14 ), Vector3( -24.5159, 94.7973, 0 ), Vector3( -16.8276, 92.8191, -2.14639 ), Vector3( -27.811, 25.0703, -2.10514 ), Vector3( -22.8936, -73.4601, -4.93395 ), Vector3( 0.705003, 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:translation")
@@ -189,7 +189,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.4, 3, 4.3, 5.5, 7.1, 8.8, 10.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 64.704, 25.114, 0 ), Vector3( 61.256, 18.161, 0 ), Vector3( 49.954, 2.247, 0 ), Vector3( 33.974, 3.252, -3.966 ), Vector3( 20.755, 2.974, 2.287 ), Vector3( -6.112, 4.517, 7.382 ), Vector3( -17.0167, 3.16133, 0.634866 ), Vector3( -15.7789, 8.28441, 0 ) ]
+"values": [ Vector3( 64.704, 25.114, 0 ), Vector3( 61.256, 18.161, 0 ), Vector3( 49.954, 2.247, 0 ), Vector3( 33.974, 3.252, -3.966 ), Vector3( 20.755, 2.974, 2.287 ), Vector3( -6.112, 4.517, 7.382 ), Vector3( -17.0167, 3.16133, 0.634866 ), Vector3( 5.68434e-14, 1.03187, -0.234562 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:scale")
@@ -201,7 +201,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1.4, 3, 4.3, 5.5, 7.1, 8.8, 10.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ) ]
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1.18832, 1.02737, 1.03034 ) ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -922,26 +922,27 @@ shape = SubResource( 4 )
 
 [node name="3DGodotRobot" parent="player" instance=ExtResource( 7 )]
 transform = Transform( -0.771264, 0, -6.74261e-08, 0, 0.771264, 0, 6.74261e-08, 0, -0.771264, 0, 0, 0 )
+visible = false
 
 [node name="Listener" type="Listener" parent="player"]
 transform = Transform( 0.999999, 0, 1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 1.7053e-13, 1.00626, -0.534632 )
 current = true
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, 0.0288114, -0.999585, 5.29396e-23, 0.999585, 0.0288114, 1, 1.25939e-09, -4.36932e-08, -9.68818, 1.36689, 2.66234e-07 )
+[node name="Camera" type="Camera" parent="player"]
+transform = Transform( 1.18832, -3.33067e-16, 1.06581e-13, 0, 1.02729, -0.0126046, 0, 0.012641, 1.03026, 5.68434e-14, 1.03187, -0.234562 )
 cull_mask = 1
 environment = SubResource( 14 )
 current = true
 fov = 47.8125
 script = ExtResource( 17 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player/Camera"]
 autoplay = "RESET"
 reset_on_save = false
 anims/RESET = SubResource( 25 )
 anims/intro = SubResource( 26 )
 
-[node name="Restart" type="Button" parent="Camera"]
+[node name="Restart" type="Button" parent="player/Camera"]
 visible = false
 margin_right = 12.0
 margin_bottom = 20.0
@@ -950,4 +951,4 @@ icon = ExtResource( 18 )
 
 [connection signal="input_event" from="floor/StaticBody" to="." method="_on_StaticBody_input_event"]
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
-[connection signal="button_down" from="Camera/Restart" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="player/Camera/Restart" to="." method="_on_Button_button_down"]

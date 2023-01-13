@@ -5,9 +5,9 @@ var losevideo := preload("res://assets/anims/Lose.webm");
 
 var Winsequence = []
 
-onready var camera_anim = get_node("Camera/AnimationPlayer");
+onready var camera_anim = get_node("$player/Camera/AnimationPlayer");
 onready var player = get_node("player");
-onready var bt_restart = get_node("Camera/Restart");
+onready var bt_restart = get_node("$player/Camera/Restart");
 onready var videoplayer := $VideoPlayer 
 
 export(int) var win_level = 4;

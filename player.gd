@@ -6,29 +6,23 @@ export var gravity = -5
 var target = null
 var velocity = Vector3.ZERO
 
+onready var camera = $Camera
+
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	if target:
 		look_at(target, Vector3.UP)
 		rotation.x = 0
-		velocity = -transform.basis.z * speed;
+		velocity = (target - transform.origin).normalized() * speed
 		animatebody("move_forward");
 		if transform.origin.distance_to(target) < .5:
 			target = null
 			velocity = Vector3.ZERO
 			animatebody("idle");
 	velocity = move_and_slide(velocity, Vector3.UP)
-
-
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		if event.relative.x > 0:
-			rotate_y(-lerp(0, spin, event.relative.x/10))
-		elif event.relative.x < 0:
-			rotate_y(-lerp(0, spin, event.relative.x/10))
+	rotation.y = camera.rotation.y
 
 func animatebody(action):
-
 	var modelAnim = get_node("3DGodotRobot/AnimationPlayer");
 	match action:
 		"idle":

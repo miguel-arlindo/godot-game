@@ -3879,6 +3879,7 @@ mesh = SubResource( 3 )
 skin = SubResource( 2 )
 
 [node name="Face" type="MeshInstance" parent="RobotArmature/Skeleton"]
+visible = false
 mesh = SubResource( 4 )
 skin = SubResource( 2 )
 
